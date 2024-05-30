@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Website</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+
+<body style="max-width: fit-content;">
+    <div class="main-div">
+        <div class="left-side">
+            <h1>The Company</h1>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">News</a></li>
+                <li><a href="#menu">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="right-side">
+            <h1 style="margin-top: 30px;"> Interior Design</h1>
+            <h2>Showcase.</h2>
+            <div>
+                <div style="display: flex; ">
+                    <img src="./image/images/showcase-01.jpg" alt="">
+                    <img src="./image/images/showcase-02.jpg" alt="">
+                </div>
+                <div>
+                    <img src="./image/images/showcase-03.jpg" alt="">
+                    <img src="./image/images/showcase-04.jpg" alt="">
+                </div>
+                <div>
+                    <img src="./image/images/showcase-05.jpg" alt="">
+                    <img src="./image/images/showcase-06.jpg" alt="">
+                </div>
+            </div>
+
+
+            <div class="designer-section"  id="services">
+                <h1 style="color: #ff5a3d; text-decoration: underline;">Services</h1>
+                <p> Our services cater to your every need, offering unparalleled convenience and reliability. <br><br>
+                    From expert consultations to swift solutions, we prioritize your satisfaction above all else. With a
+                    commitment to excellence, we deliver exceptional results tailored to your unique requirements. Our
+                    team of dedicated professionals ensures seamless execution, leaving no detail overlooked. Experience
+                    efficiency and effectiveness with our comprehensive range of services designed to exceed
+                    expectations. Trust us to provide personalized solutions that address your specific needs and
+                    surpass industry standards. Elevate your experience and unlock the full potential of our services
+                    today.
+                </p>
+            </div>
+            <div class="designer-section">
+                <h1 style="color: #ff5a3d; text-decoration: underline;">Designer</h1>
+                <p>The best team in the world. <br> <br>
+                    Our team of designers is passionate about bringing your vision to life, infusing creativity and
+                    innovation into every project. With a keen eye for detail and a flair for aesthetics, we craft
+                    designs that captivate and inspire. From conceptualization to execution, our designers are dedicated
+                    to delivering excellence at every stage of the process. With a focus on collaboration and
+                    communication, we ensure that your ideas are translated into stunning visuals that resonate with
+                    your audience. Harnessing the latest tools and technologies, our designers stay at the forefront of
+                    design trends, pushing boundaries and setting new standards. Trust our talented team to transform
+                    your ideas into tangible masterpieces that leave a lasting impression. Experience the difference
+                    that expert design can make in bringing your concepts to fruition.
+                </p>
+                <div class="card">
+                    <img src="./image/images/person-01.jpg" alt="Designer 1">
+                    <div>
+                        <p>Job Position: Senior Designer</p><br>
+                        <p>Details: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./image/images/person-02.jpg" alt="Designer 2">
+                    <div>
+                        <p>Job Position: Junior Designer</p><br>
+                        <p>Details: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./image/images/person-03.jpg" alt="Designer 3">
+                    <div>
+                        <p>Job Position: Lead Designer</p><br>
+                        <p>Details: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="designer-section" id="menu">
+                <h1 class="service-title" style="color: #ff5a3d; text-decoration: underline;">Packages</h1>
+                <p>
+                    Our services cater to your every need, offering unparalleled convenience and reliability. From
+                    expert consultations to swift solutions, elevate your experience and unlock the full potential of
+                    our services today.
+                </p>
+                <div class="packages-grid">
+                    <div class="package-basic-grid">
+                        <div>
+                            <h1 style="margin-top: 0; background-color: #ff5a3d; width: full; text-align: center; color: white; padding: 20px;">Basic</h1>
+                        </div>
+                        <div>
+                            <p>Floorplanning</p>
+                            <p>24/7 Support</p>
+                            <p>Professional Photography</p>
+                            <p>50% Features</p>
+                            <p>Exclusive Deals</p>
+                            <div class="price-control">
+                                <button onclick="decreasePrice('basic-price')">-</button>
+                                <span id="basic-price">100</span>
+                                <button onclick="increasePrice('basic-price')">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-pro-grid">
+                        <div>
+                            <h1 style="margin-top: 0; margin: 10px; background-color: gray; width: full; text-align: center; color: white;  padding: 20px;">Pro</h1>
+                        </div>
+                        <div>
+                            <p>Floorplanning</p>
+                            <p>24/7 Support</p>
+                            <p>Professional Photography</p>
+                            <p>50% Features</p>
+                            <p>Exclusive Deals</p>
+                            <div class="price-control">
+                                <button onclick="decreasePrice('pro-price')">-</button>
+                                <span id="pro-price">200</span>
+                                <button onclick="increasePrice('pro-price')">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <h1 style="color: #ff5a3d; text-decoration: underline; margin-top: 20px; text-align: center;">Contact Us
+            </h1><br>
+            <div  id="contact">
+                <div class="contact-form" style="width: 100%;">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    function increasePrice(id) {
+        var priceElement = document.getElementById(id);
+        var currentPrice = parseInt(priceElement.innerText);
+        priceElement.innerText = currentPrice + 1;
+    }
+
+    function decreasePrice(id) {
+        var priceElement = document.getElementById(id);
+        var currentPrice = parseInt(priceElement.innerText);
+        if (currentPrice > 1) {
+            priceElement.innerText = currentPrice - 1;
+        }
+    }
+</script>
+
+
+
+
+
+</html>
