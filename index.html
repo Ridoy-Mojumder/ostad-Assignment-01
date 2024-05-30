@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Website</title>
     <link rel="stylesheet" href="style.css">
-   
+
 </head>
 
 <body style="max-width: fit-content;">
@@ -40,7 +40,7 @@
             </div>
 
 
-            <div class="designer-section"  id="services">
+            <div class="designer-section" id="services">
                 <h1 style="color: #ff5a3d; text-decoration: underline;">Services</h1>
                 <p> Our services cater to your every need, offering unparalleled convenience and reliability. <br><br>
                     From expert consultations to swift solutions, we prioritize your satisfaction above all else. With a
@@ -91,7 +91,7 @@
 
 
             <div class="designer-section" id="menu">
-                <h1 class="service-title" style="color: #ff5a3d; text-decoration: underline;">Packages</h1>
+                <h1 class="service-title">Packages</h1>
                 <p>
                     Our services cater to your every need, offering unparalleled convenience and reliability. From
                     expert consultations to swift solutions, elevate your experience and unlock the full potential of
@@ -100,7 +100,7 @@
                 <div class="packages-grid">
                     <div class="package-basic-grid">
                         <div>
-                            <h1 style="margin-top: 0; background-color: #ff5a3d; width: full; text-align: center; color: white; padding: 20px;">Basic</h1>
+                            <h1 class="package-title" style="margin-top: 0; background-color: #ff5a3d; width: full; text-align: center; color: white; padding: 20px;">Basic</h1>
                         </div>
                         <div>
                             <p>Floorplanning</p>
@@ -109,15 +109,34 @@
                             <p>50% Features</p>
                             <p>Exclusive Deals</p>
                             <div class="price-control">
-                                <button onclick="decreasePrice('basic-price')">-</button>
-                                <span id="basic-price">100</span>
-                                <button onclick="increasePrice('basic-price')">+</button>
+                                <button onclick="decreasePrice('basic-price', 'basic-room')">-</button>
+                                <span id="basic-room">1 room</span> - $
+                                <span id="basic-price">199</span>
+                                <button onclick="increasePrice('basic-price', 'basic-room')">+</button>
                             </div>
+                            <button 
+                            style="
+                                background-color: #ff5a3d;
+                                border: none; 
+                                color: white; 
+                                padding: 15px 32px; 
+                                text-align: center; 
+                                text-decoration: none; 
+                                display: inline-block; 
+                                font-size: 16px; 
+                                margin: 4px 2px; 
+                                cursor: pointer; 
+                                border-radius: 12px; 
+                                transition: background-color 0.3s ease, transform 0.3s ease; 
+                            "
+                            class="signup-btn" data-room="basic-room" data-price="basic-price">
+                                Sign Up
+                            </button>
                         </div>
                     </div>
                     <div class="package-pro-grid">
                         <div>
-                            <h1 style="margin-top: 0; margin: 10px; background-color: gray; width: full; text-align: center; color: white;  padding: 20px;">Pro</h1>
+                            <h1 class="package-title" style="margin-top: 0; background-color: #ff5a3d; width: full; text-align: center; color: white; padding: 20px;">Pro</h1>
                         </div>
                         <div>
                             <p>Floorplanning</p>
@@ -126,22 +145,40 @@
                             <p>50% Features</p>
                             <p>Exclusive Deals</p>
                             <div class="price-control">
-                                <button onclick="decreasePrice('pro-price')">-</button>
-                                <span id="pro-price">200</span>
-                                <button onclick="increasePrice('pro-price')">+</button>
+                                <button onclick="decreasePrice('pro-price', 'pro-room')">-</button>
+                                <span id="pro-room">1 room</span> - $
+                                <span id="pro-price">199</span>
+                                <button onclick="increasePrice('pro-price', 'pro-room')">+</button>
                             </div>
+                            <button
+                            style="
+                                background-color: #4CAF50;
+                                border: none; 
+                                color: white; 
+                                padding: 15px 32px; 
+                                text-align: center; 
+                                text-decoration: none; 
+                                display: inline-block; 
+                                font-size: 16px; 
+                                margin: 4px 2px; 
+                                cursor: pointer; 
+                                border-radius: 12px; 
+                                transition: background-color 0.3s ease, transform 0.3s ease;
+                            "
+                            class="signup-btn" data-room="pro-room" data-price="pro-price">
+                                Sign Up
+                            </button>
                         </div>
                     </div>
                 </div>
-
+                <p id="thank-you" style="display:none;"></p>
             </div>
-
 
             <h1 style="color: #ff5a3d; text-decoration: underline; margin-top: 20px; text-align: center;">Contact Us
             </h1><br>
-            <div  id="contact">
+            <div id="contact">
                 <div class="contact-form" style="width: 100%;">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -164,19 +201,57 @@
 </body>
 
 <script>
-    function increasePrice(id) {
-        var priceElement = document.getElementById(id);
-        var currentPrice = parseInt(priceElement.innerText);
-        priceElement.innerText = currentPrice + 1;
+   function increasePrice(priceId, roomId) {
+    const priceElement = document.getElementById(priceId);
+    const roomElement = document.getElementById(roomId);
+
+    let currentPrice = parseInt(priceElement.innerText);
+    let currentRooms = parseInt(roomElement.innerText.split(' ')[0]);
+
+    currentRooms += 1;
+    currentPrice = currentRooms * 199;
+
+    roomElement.innerText = `${currentRooms} room${currentRooms > 1 ? 's' : ''}`;
+    priceElement.innerText = currentPrice;
+}
+
+function decreasePrice(priceId, roomId) {
+    const priceElement = document.getElementById(priceId);
+    const roomElement = document.getElementById(roomId);
+
+    let currentPrice = parseInt(priceElement.innerText);
+    let currentRooms = parseInt(roomElement.innerText.split(' ')[0]);
+
+    if (currentRooms > 1) {
+        currentRooms -= 1;
+        currentPrice = currentRooms * 199;
     }
 
-    function decreasePrice(id) {
-        var priceElement = document.getElementById(id);
-        var currentPrice = parseInt(priceElement.innerText);
-        if (currentPrice > 1) {
-            priceElement.innerText = currentPrice - 1;
-        }
+    roomElement.innerText = `${currentRooms} room${currentRooms > 1 ? 's' : ''}`;
+    priceElement.innerText = currentPrice;
+}
+
+// JavaScript for handling the Sign Up button
+document.querySelectorAll('.signup-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const roomElement = document.getElementById(this.getAttribute('data-room'));
+        const thankYouElement = document.getElementById('thank-you');
+        thankYouElement.innerText = `Thank you for choosing ${roomElement.innerText}.`;
+        thankYouElement.style.display = 'block';
+    });
+});
+
+// JavaScript for form validation
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+        event.preventDefault();
+        alert('Please fill in all fields.');
     }
+});
 </script>
 
 
